@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Trial Prep Guide | The Beauty Consultant</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blush: #FCEEE9;
+    --paper: #FFFFFF;
+    --ink: #1A1512;
+    --ink-soft: #6E6560;
+    --line: #E8D8D0;
+
+    --rose: #C08278;
+    --rose-deep: #AD6D63;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--blush);
+    color: var(--ink);
+    font-family: 'Karla', sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .app {
+    max-width: 480px;
+    margin: 0 auto;
+    min-height: 100vh;
+    background: var(--blush);
+    position: relative;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, .display {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    margin: 0;
+  }
+
+  button { font-family: inherit; }
+
+  .tracked {
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+  }
+
+  /* ---------- Logo bar ---------- */
+  .logo-bar {
+    padding: 22px 24px 18px;
+    border-bottom: 1px solid var(--line);
+  }
+  .logo-bar .mark {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 1.25;
+    letter-spacing: 0.04em;
+  }
+  .logo-bar .sub {
+    font-size: 9.5px;
+    color: var(--ink-soft);
+    letter-spacing: 0.28em;
+    margin-top: 3px;
+  }
+
+  /* ---------- Screens ---------- */
+  .screen {
+    display: none;
+    animation: rise 0.38s ease both;
+  }
+  .screen.active { display: block; }
+  .screen-pad { padding: 28px 24px 60px; }
+
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ---------- Home ---------- */
+  .eyebrow {
+    font-size: 11.5px;
+    color: var(--rose-deep);
+    margin-bottom: 10px;
+  }
+
+  .home-title {
+    font-size: 42px;
+    line-height: 1.04;
+    margin-bottom: 4px;
+  }
+  .home-title .accent {
+    font-style: italic;
+    font-weight: 500;
+    color: var(--rose);
+  }
+
+  .home-sub {
+    color: var(--ink-soft);
+    font-size: 15px;
+    line-height: 1.55;
+    max-width: 34ch;
+    margin: 14px 0 30px;
+  }
+
+  .callout {
+    margin-bottom: 34px;
+  }
+
+  .callout h2 {
+    font-size: 24px;
+    margin-bottom: 4px;
+  }
+  .callout h2 .accent {
+    font-style: italic;
+    font-weight: 500;
+    color: var(--rose);
+  }
+
+  .callout-list {
+    margin-top: 18px;
+  }
+
+  .callout-item {
+    display: flex;
+    gap: 14px;
+    padding: 14px 0;
+    border-top: 1px solid var(--line);
+  }
+  .callout-item:first-child { border-top: none; padding-top: 0; }
+
+  .callout-item .num {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 17px;
+    color: var(--rose);
+    flex: none;
+    width: 22px;
+  }
+  .callout-item .txt {
+    font-size: 14.5px;
+    line-height: 1.5;
+    color: var(--ink);
+  }
+
+  .section-label {
+    display: inline-block;
+    background: var(--paper);
+    border: 1px solid var(--rose);
+    border-radius: 999px;
+    padding: 8px 16px;
+    font-size: 12.5px;
+    font-weight: 700;
+    color: var(--rose-deep);
+    margin: 0 0 16px;
+  }
+
+  .chapters {
+    border-top: 1px solid var(--line);
+  }
+
+  .chapter-row {
+    width: 100%;
+    background: none;
+    border: none;
+    border-bottom: 1px solid var(--line);
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 18px 2px;
+    cursor: pointer;
+    text-align: left;
+  }
+  .chapter-row:active { opacity: 0.6; }
+
+  .chapter-row .num {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 20px;
+    color: var(--rose);
+    flex: none;
+    width: 26px;
+  }
+  .chapter-row .icon {
+    width: 20px;
+    height: 20px;
+    flex: none;
+    color: var(--rose-deep);
+  }
+  .chapter-row .body { flex: 1; }
+  .chapter-row .label {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 1.2;
+  }
+  .chapter-row .desc {
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    margin-top: 2px;
+  }
+  .chapter-row .arrow {
+    flex: none;
+    color: var(--ink-soft);
+  }
+
+  .footnote {
+    margin-top: 34px;
+    text-align: center;
+  }
+  .footnote-btn {
+    display: inline-block;
+    background: var(--paper);
+    border: 1px solid var(--rose);
+    color: var(--rose-deep);
+    font-family: 'Karla', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 12.5px;
+    padding: 14px 28px;
+    border-radius: 999px;
+  }
+
+  /* ---------- Chapter screens ---------- */
+  .back-btn {
+    background: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--ink-soft);
+    font-size: 13px;
+    padding: 0;
+    margin-bottom: 26px;
+    cursor: pointer;
+    letter-spacing: 0.08em;
+  }
+
+  .chapter-head { margin-bottom: 26px; }
+
+  .chapter-icon {
+    width: 34px;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+    color: var(--rose);
+  }
+  .chapter-icon svg { width: 26px; height: 26px; }
+
+  .chapter-title { font-size: 30px; margin-bottom: 8px; }
+  .chapter-kicker { font-size: 14.5px; color: var(--ink-soft); line-height: 1.5; }
+
+  .block {
+    margin-bottom: 26px;
+  }
+
+  .block h3 {
+    font-size: 11px;
+    font-family: 'Karla', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--rose-deep);
+    margin-bottom: 4px;
+  }
+
+  .block ul { margin: 0; padding: 0; list-style: none; }
+  .block li {
+    font-size: 15px;
+    line-height: 1.5;
+    padding: 11px 0;
+    border-top: 1px solid var(--line);
+  }
+  .block li:first-of-type { border-top: none; }
+
+  .warn {
+    border-top: 1px solid var(--ink);
+    border-bottom: 1px solid var(--ink);
+    padding: 18px 0;
+    margin-bottom: 26px;
+    font-size: 14.5px;
+    line-height: 1.55;
+    color: var(--ink);
+  }
+  .warn strong {
+    display: block;
+    margin-bottom: 6px;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 18px;
+    color: var(--rose-deep);
+  }
+  .big-warn {
+    display: inline-block;
+    font-weight: 800;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3px;
+    font-size: 1.35em;
+    line-height: 1.3;
+  }
+
+  .feature {
+    border-top: 1px solid var(--rose);
+    border-bottom: 1px solid var(--rose);
+    padding: 18px 0;
+    margin-bottom: 18px;
+    font-size: 14.5px;
+    line-height: 1.55;
+    color: var(--ink);
+  }
+  .feature strong {
+    display: block;
+    margin-bottom: 6px;
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 19px;
+    color: var(--ink);
+  }
+
+  /* provider cards */
+  .provider {
+    background: var(--paper);
+    border-left: 3px solid var(--rose);
+    padding: 16px 18px;
+    margin-bottom: 14px;
+  }
+  .provider .p-name {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 19px;
+    margin-bottom: 2px;
+  }
+  .provider .p-loc {
+    font-size: 13px;
+    font-style: italic;
+    color: var(--ink-soft);
+    margin-bottom: 12px;
+  }
+  .provider .p-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .provider a {
+    text-decoration: none;
+    font-size: 11.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--rose-deep);
+    border-bottom: 1px solid var(--rose);
+    padding-bottom: 2px;
+    display: inline-block;
+  }
+
+  .provider .note {
+    margin-top: 10px;
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    line-height: 1.5;
+  }
+
+  @media (min-width: 520px) {
+    .app { margin-top: 24px; margin-bottom: 24px; box-shadow: 0 30px 60px rgba(26,21,18,0.12); min-height: auto; }
+  }
+</style>
+</head>
+<body>
+
+<div class="app">
+
+  <div class="logo-bar">
+    <div class="mark">THE BEAUTY<br>CONSULTANT</div>
+    <div class="sub">MAKEUP &amp; HAIR</div>
+  </div>
+
+  <!-- ================= HOME ================= -->
+  <section class="screen active" id="home">
+    <div class="screen-pad">
+    <div class="eyebrow tracked">Trial Prep</div>
+    <h1 class="home-title display">Your Trial,<br><span class="accent">Prepped</span></h1>
+    <p class="home-sub">A quick read, but an important one. Following this is what gets you the best possible result at your trial.</p>
+
+    <div class="callout">
+      <div class="eyebrow tracked">What To Expect</div>
+      <h2 class="display">Before Your <span class="accent">Trial</span></h2>
+      <div class="callout-list">
+        <div class="callout-item">
+          <span class="num">01</span>
+          <span class="txt">Book your facial, dermaplaning, and brow shape for about a week before your trial.</span>
+        </div>
+        <div class="callout-item">
+          <span class="num">02</span>
+          <span class="txt">Get your brows styled: waxing, threading, and/or lamination all work well.</span>
+        </div>
+        <div class="callout-item">
+          <span class="num">03</span>
+          <span class="txt">Wash your hair within 12 hours of your appointment, no product.</span>
+        </div>
+        <div class="callout-item">
+          <span class="num">04</span>
+          <span class="txt">Getting spray tanned for the wedding? Come to your trial already tanned.</span>
+        </div>
+        <div class="callout-item">
+          <span class="num">05</span>
+          <span class="txt">Considering Botox or filler? See our recommended medical professionals below, well ahead of your trial.</span>
+        </div>
+        <div class="callout-item">
+          <span class="num">06</span>
+          <span class="txt">Bring any extensions, veil, or hair pieces with you.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-label tracked">Tap A Chapter For The Details &darr;</div>
+    <div class="chapters">
+      <button class="chapter-row" onclick="showScreen('skin')">
+        <span class="num">01</span>
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M12 3c3 3.2 5.5 6.8 5.5 10a5.5 5.5 0 0 1-11 0C6.5 9.8 9 6.2 12 3Z"/></svg>
+        <span class="body">
+          <span class="label">Skin Care</span>
+          <span class="desc">Routine, timeline, treatments to avoid</span>
+        </span>
+        <span class="arrow">&rarr;</span>
+      </button>
+      <button class="chapter-row" onclick="showScreen('est')">
+        <span class="num">02</span>
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M4 15c2-6 4-10 8-10s6 4 8 10"/><path d="M4 15c1.5 1 3 1.5 4 1"/><path d="M20 15c-1.5 1-3 1.5-4 1"/></svg>
+        <span class="body">
+          <span class="label">Estheticians</span>
+          <span class="desc">Who to book, and how to reach them</span>
+        </span>
+        <span class="arrow">&rarr;</span>
+      </button>
+      <button class="chapter-row" onclick="showScreen('hair')">
+        <span class="num">03</span>
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M5 4v16M9 4v16M13 4v16M17 4v16" /></svg>
+        <span class="body">
+          <span class="label">Hair Care</span>
+          <span class="desc">Washing, extensions, cut and color</span>
+        </span>
+        <span class="arrow">&rarr;</span>
+      </button>
+      <button class="chapter-row" onclick="showScreen('tan')">
+        <span class="num">04</span>
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg>
+        <span class="body">
+          <span class="label">Spray Tan / Tanning</span>
+          <span class="desc">Timing, our recommendation, sun tips</span>
+        </span>
+        <span class="arrow">&rarr;</span>
+      </button>
+      <button class="chapter-row" onclick="showScreen('medical')">
+        <span class="num">05</span>
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M12 2v20M2 12h20"/></svg>
+        <span class="body">
+          <span class="label">Medical Grade Treatments</span>
+          <span class="desc">Botox, Dysport, filler, laser, and who to see</span>
+        </span>
+        <span class="arrow">&rarr;</span>
+      </button>
+    </div>
+
+    <div class="footnote"><span class="footnote-btn">Questions? Just reply to this text.</span></div>
+    </div>
+  </section>
+
+  <!-- ================= SKIN ================= -->
+  <section class="screen" id="skin">
+    <div class="screen-pad">
+    <button class="back-btn tracked" onclick="showScreen('home')">&larr; Back</button>
+    <div class="chapter-head">
+      <div class="chapter-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M12 3c3 3.2 5.5 6.8 5.5 10a5.5 5.5 0 0 1-11 0C6.5 9.8 9 6.2 12 3Z"/></svg>
+      </div>
+      <h2 class="chapter-title display">Skin <span class="accent">Care</span></h2>
+      <p class="chapter-kicker">Glowing makeup starts with the skin underneath. Here's the short version.</p>
+    </div>
+
+    <div class="block">
+      <h3>Daily, non-negotiable</h3>
+      <ul>
+        <li>Gentle, non-stripping cleanser</li>
+        <li>Vitamin C serum + hyaluronic acid</li>
+        <li>Moisturizer to lock in hydration</li>
+        <li>SPF every morning, even when cloudy</li>
+        <li>Gentle exfoliation, 2x a week</li>
+      </ul>
+    </div>
+
+    <div class="block">
+      <h3>Optional, but worth it</h3>
+      <ul>
+        <li>Microneedling, no later than 3&ndash;4 weeks before the wedding, done by your esthetician</li>
+      </ul>
+    </div>
+
+    <div class="warn">
+      <strong>Avoid within 2&ndash;3 weeks of your trial</strong>
+      Lasers, peels, microneedling, <span class="big-warn">AVOID RETINOIDS</span>, strong acids, microblading, or anything invasive. Flaky, healing skin makes makeup look cakey.
+      <br><br>
+      If you are (or recently were) on oral acne medication, a hydrafacial and hydrating skincare will help balance the drying effects, so your skin is in the best shape for your trial.
+      <br><br>
+      Please let your esthetician know if you are on retinoids or acne medications when you book your appointment.
+    </div>
+    </div>
+  </section>
+
+  <!-- ================= ESTHETICIANS ================= -->
+  <section class="screen" id="est">
+    <div class="screen-pad">
+    <button class="back-btn tracked" onclick="showScreen('home')">&larr; Back</button>
+    <div class="chapter-head">
+      <div class="chapter-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M4 15c2-6 4-10 8-10s6 4 8 10"/><path d="M4 15c1.5 1 3 1.5 4 1"/><path d="M20 15c-1.5 1-3 1.5-4 1"/></svg>
+      </div>
+      <h2 class="chapter-title display">Esthe<span class="accent">ticians</span></h2>
+      <p class="chapter-kicker">Book one appointment for a <strong>hydrafacial</strong>, <strong>dermaplaning</strong>, and <strong>brow shaping</strong>, 2&ndash;7 days before your trial. All four providers below can do all three in one visit.</p>
+    </div>
+
+    <div class="provider">
+      <div class="p-name">Oath Skin Studio</div>
+      <div class="p-loc">1126 Sam Newell Rd, Matthews, same plaza as TBC</div>
+      <div class="p-actions">
+        <a href="tel:2029616807">Book in studio</a>
+      </div>
+      <div class="note">Owned and run by Rachel, one of our lead makeup artists.</div>
+    </div>
+
+    <div class="provider">
+      <div class="p-name">Dailyn Brito</div>
+      <div class="p-loc">Lake Wylie area</div>
+      <div class="p-actions">
+        <a href="tel:9546440469">Call</a>
+        <a href="mailto:Dbeautylabllc@gmail.com">Email</a>
+      </div>
+    </div>
+
+    <div class="provider">
+      <div class="p-name">Krista Scott</div>
+      <div class="p-loc">Southend Charlotte area</div>
+      <div class="p-actions">
+        <a href="tel:7046078658">Text or call</a>
+      </div>
+    </div>
+
+    <div class="provider">
+      <div class="p-name">Skin Pharm</div>
+      <div class="p-loc">Cosmetic Dermatology &amp; Skin Care Clinic</div>
+      <div class="p-actions">
+        <a href="tel:9808803899">Text to book</a>
+      </div>
+    </div>
+
+    <p style="font-size: 13px; color: var(--ink-soft); line-height: 1.5; margin-top: 4px;">*Stray brow hairs can make makeup look cakey, so please have them cleaned up beforehand.</p>
+    <p style="font-size: 13px; color: var(--ink-soft); line-height: 1.5; margin-top: 10px;">*Your makeup will lie smoother and last longer once peach fuzz is removed, that's why dermaplaning is so important.</p>
+    </div>
+  </section>
+
+  <!-- ================= HAIR ================= -->
+  <section class="screen" id="hair">
+    <div class="screen-pad">
+    <button class="back-btn tracked" onclick="showScreen('home')">&larr; Back</button>
+    <div class="chapter-head">
+      <div class="chapter-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M5 4v16M9 4v16M13 4v16M17 4v16" /></svg>
+      </div>
+      <h2 class="chapter-title display">Hair <span class="accent">Care</span></h2>
+      <p class="chapter-kicker">Clean, dry hair styles best. Here's what to know before you arrive.</p>
+    </div>
+
+    <div class="block">
+      <h3>Arriving for your appointment</h3>
+      <ul>
+        <li>Clean, dry hair, washed within 12 hours, no product</li>
+        <li>Bring any veil or hair accessories with you</li>
+      </ul>
+    </div>
+
+    <div class="block">
+      <h3>Natural hair (curl types 3A&ndash;4C+)</h3>
+      <ul>
+        <li>We recommend a silk press or blowout before your trial and wedding</li>
+        <li>Want to keep your natural curls? Send us 3 photos: freshly washed, styled by you, and your inspiration photo (similar texture and length)</li>
+      </ul>
+      <p style="font-size: 13px; color: var(--ink-soft); line-height: 1.5; margin-top: 12px;">Please email us directly with any questions.</p>
+    </div>
+
+    <div class="block">
+      <h3>Clip-in extensions</h3>
+      <ul>
+        <li>Bring them to your trial and your wedding day</li>
+        <li>100% Remy human hair, matched to your natural color</li>
+        <li>Brand new? Shampoo and air dry before use, once the color match is confirmed</li>
+        <li>Wrong color? Don't open the rest, just return them</li>
+      </ul>
+    </div>
+
+    <div class="feature">
+      <strong>Most hairstyles look even better with clip-in extensions</strong>
+      The majority of the Pinterest inspo and photos brides send us have extensions in them. We take care of all of that for you, we offer our own line of luxury clip-in extensions, color matched to you.
+    </div>
+
+    <div class="provider">
+      <div class="p-name">TBC Luxury Extensions</div>
+      <div class="note">Send a few photos or videos of your hair in natural light, roots to ends, and we'll quote a custom color match.</div>
+    </div>
+
+    <p class="chapter-kicker" style="margin: 26px 0 14px;">Looking for a cut, colorist, or bonding specialist? Go here.</p>
+
+    <div class="provider">
+      <div class="p-name">Amanda Briska</div>
+      <div class="p-loc">Luxe Color Lab, 946 Westmere Ave, Charlotte</div>
+      <div class="p-actions">
+        <a href="tel:7047707779">Call or text</a>
+      </div>
+      <div class="note">Tip: get a trim 4&ndash;6 weeks before your trial and wedding day.</div>
+    </div>
+    </div>
+  </section>
+
+  <!-- ================= SPRAY TAN ================= -->
+  <section class="screen" id="tan">
+    <div class="screen-pad">
+    <button class="back-btn tracked" onclick="showScreen('home')">&larr; Back</button>
+    <div class="chapter-head">
+      <div class="chapter-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg>
+      </div>
+      <h2 class="chapter-title display">Spray Tan<span class="accent"> / Tanning</span></h2>
+      <p class="chapter-kicker">Getting tanned for the wedding? A few things to know first.</p>
+    </div>
+
+    <div class="block">
+      <h3>Before your trial</h3>
+      <ul>
+        <li>Come to your trial already tanned, so we can match your wedding day skin</li>
+        <li>Keep the face tan light</li>
+        <li>Shower 2&ndash;3 times before your appointment</li>
+      </ul>
+    </div>
+
+    <div class="provider">
+      <div class="p-name">No Shade Spray Tan</div>
+      <div class="p-actions">
+        <a href="tel:7042938461">Call or text</a>
+        <a href="https://instagram.com/noshadespraytan" target="_blank" rel="noopener">Instagram</a>
+      </div>
+    </div>
+
+    <div class="warn">
+      <strong>Skip the sun before your trial</strong>
+      Sunburned skin gets <strong>dehydrated</strong> and <strong>flaky</strong> so makeup won't sit smoothly or last. Even once the redness fades, the <strong>texture</strong> often photographs <strong>rough</strong> or <strong>uneven</strong> a spray tan or self-tanner gives a controlled, camera-ready glow instead. Just don't forget your SPF along the way.
+    </div>
+    </div>
+  </section>
+
+  <!-- ================= MEDICAL GRADE TREATMENTS ================= -->
+  <section class="screen" id="medical">
+    <div class="screen-pad">
+    <button class="back-btn tracked" onclick="showScreen('home')">&larr; Back</button>
+    <div class="chapter-head">
+      <div class="chapter-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M12 2v20M2 12h20"/></svg>
+      </div>
+      <h2 class="chapter-title display">Medical Grade <span class="accent">Treatments</span></h2>
+      <p class="chapter-kicker">Considering Botox, Dysport, filler, or laser treatments? Here's who we recommend.</p>
+    </div>
+
+    <div class="block">
+      <h3>Why it's worth it</h3>
+      <ul>
+        <li>Softens expression lines so makeup doesn't settle or crease</li>
+        <li>Every treatment settles differently, so timing before your trial should be planned with your injector, not guessed</li>
+      </ul>
+    </div>
+
+    <div class="provider">
+      <div class="p-name">Asha Barua</div>
+      <div class="p-loc">Master Nurse Injector, Asha Aesthetics CHLT &mdash; Ballantyne, Charlotte, NC</div>
+      <div class="p-actions">
+        <a href="tel:7049950667">Call</a>
+        <a href="https://www.instagram.com/ashaaestheticsclt/" target="_blank" rel="noopener">Instagram</a>
+      </div>
+      <div class="note">Our recommendation for all injectables.</div>
+    </div>
+
+    <div class="block" style="margin-top: 34px;">
+      <h3>Laser treatments</h3>
+      <ul>
+        <li>Can help even out skin tone, soften fine lines, and improve texture and discoloration</li>
+        <li>Scheduled well outside the 2&ndash;3 week window before your trial</li>
+      </ul>
+    </div>
+
+    <div class="provider">
+      <div class="p-name">Ageless Remedies</div>
+      <div class="p-loc">Morrocroft Village, SouthPark, 3900 Colony Rd, Charlotte, NC 28211</div>
+      <div class="p-actions">
+        <a href="tel:7043851681">Call</a>
+        <a href="https://www.instagram.com/ageless_remedies/" target="_blank" rel="noopener">Instagram</a>
+      </div>
+      <div class="note">Our recommendation for laser treatments.</div>
+    </div>
+    </div>
+  </section>
+
+</div>
+
+<script>
+  function showScreen(id) {
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    document.getElementById(id).scrollIntoView({ block: 'start' });
+    window.scrollTo(0, 0);
+  }
+</script>
+
+</body>
+</html>
